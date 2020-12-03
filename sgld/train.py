@@ -64,8 +64,9 @@ def train(trainloader, model, criterion, optimizer, epoch, cuda=False,
         # measure data loading time
         data_time.update(time.time() - end)
 
+        # found this that suggest changing `async` to `non_blocking`: https://github.com/quark0/darts/pull/25
         if cuda:
-            inputs, targets = inputs.cuda(), targets.cuda(async=True)
+            inputs, targets = inputs.cuda(), targets.cuda(non_blocking=True)
 
         # compute output
         outputs = model(inputs)
