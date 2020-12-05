@@ -20,11 +20,11 @@ def make_args(parser):
                         choices=EXPERIMENTS,
                         help='which experiment analysis code to run!',
                         default='all')
-    parser.add_argument('--start_epoch', default=161,
+    parser.add_argument('--start_epoch', default=161, type=int,
                         help='burn-in period length')
-    parser.add_argument('--end_epoch', default=200,
+    parser.add_argument('--end_epoch', default=200, type=int,
                         help='stop collecting samples after this epoch')
-    parser.add_argument('--noise_scale', default=1e-8,
+    parser.add_argument('--noise_scale', default=1e-8, type=float,
                         help='choose samples from trial trained with this'
                              ' noise level')
     parser.add_argument('--results_dir', default='logs/',
